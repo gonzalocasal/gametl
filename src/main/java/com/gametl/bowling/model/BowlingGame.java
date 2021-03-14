@@ -1,12 +1,14 @@
 package com.gametl.bowling.model;
 
 import com.gametl.common.model.Game;
+import lombok.Getter;
 import lombok.ToString;
 
 import java.util.HashMap;
 import java.util.Map;
 
 
+@Getter
 @ToString
 public class BowlingGame implements Game<BowlingPlay> {
 
@@ -17,10 +19,6 @@ public class BowlingGame implements Game<BowlingPlay> {
         String playerName = play.getPlayerName();
         BowlingPlayer player = getPlayer(playerName);
         player.addPlay(play);
-    }
-
-    public void getResults() {
-        playersMap.values().forEach(BowlingPlayer::getTotalScore);
     }
 
     private BowlingPlayer getPlayer(String playerName) {

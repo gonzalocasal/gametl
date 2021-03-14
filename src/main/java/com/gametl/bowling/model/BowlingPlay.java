@@ -16,6 +16,7 @@ public class BowlingPlay implements Play {
     private String playerName;
     private int score;
     private boolean isFoul;
+    private boolean isStrike;
 
     public static BowlingPlay getInstanceFromFile(String fileLine) {
         BowlingPlay instance = new BowlingPlay();
@@ -28,6 +29,7 @@ public class BowlingPlay implements Play {
         String[] split = fileLine.split(BOWLING_FILE_ROW_SPLIT_REGEX);
         this.playerName = split[0].trim();
         parseScore(split[1].trim());
+        this.isStrike = this.score == BOWLING_PLAY_MAX_SCORE;
     }
 
     private void parseScore(String scoreStr) {

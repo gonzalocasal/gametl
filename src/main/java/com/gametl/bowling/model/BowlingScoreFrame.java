@@ -33,20 +33,19 @@ public class BowlingScoreFrame {
     }
 
     public void addTry(BowlingPlay play) {
-        if (isLastFrame && firstTry != null && secondTry != null) {
-            thirdTry = play;
-        }
         if (firstTry == null) {
             countFirstBall(play);
-        } else {
+        } else if (secondTry == null) {
             countSecondBall(play);
+        } else if (isLastFrame) {
+            countThirdBall(play);
         }
     }
 
     private void countFirstBall(BowlingPlay play) {
         firstTry = play;
         frameScore = play.getScore();
-        if (play.getScore() == BOWLING_PLAY_MAX_SCORE) {
+        if (play.isStrike()) {
             isStrike = true;
         }
     }
@@ -57,6 +56,11 @@ public class BowlingScoreFrame {
         if (frameScore == BOWLING_PLAY_MAX_SCORE) {
             isSpare = true;
         }
+    }
+
+    private void countThirdBall(BowlingPlay play) {
+        thirdTry = play;
+        frameScore += play.getScore();
     }
 
     public boolean isCompleted() {

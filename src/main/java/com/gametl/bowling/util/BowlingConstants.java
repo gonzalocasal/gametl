@@ -3,7 +3,11 @@ package com.gametl.bowling.util;
 public class BowlingConstants {
 
     public static final String BOWLING_FOUL_CHAR = "F";
+    public static final String BOWLING_SPARE_CHAR = "/";
+    public static final String BOWLING_STRIKE_FIRST_ROW_CHAR = " ";
+    public static final String BOWLING_STRIKE_CHAR = "X";
     public static final String BOWLING_FILE_ROW_SPLIT_REGEX = "\t";
+    public static final String BOWLING_FILE_ROW_END_REGEX = "\n";
 
     public static final int BOWLING_BONUS_MAX_COUNT = 2;
     public static final int BOWLING_FRAMES_COUNT_MAX = 10;

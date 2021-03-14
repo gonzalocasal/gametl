@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 
 @Component
 @Log4j2
-public class FileReader {
+public class GameFileReader {
 
     public void readFile(String filePath, Consumer<String> consumer) throws Exception {
         log.info("Reading from file {}", filePath);
