@@ -30,7 +30,7 @@ The default input and output file paths are relative:
 * src/main/resources/bowling_example
 * src/main/resources/bowling_example_out
 
-You can override these paths and execute the application with custom absolute paths:
+You can override one or both paths, and execute the application with custom absolute paths:
 ```
 java -jar target/gametl-1.0.0.jar --file.in.path=/home/user/in/bowling_example   --file.out.path=/home/user/out/bowling_example_out
 ```
