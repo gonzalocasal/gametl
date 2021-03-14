@@ -13,12 +13,12 @@ A commandline application to parse, process and export games results.
 
 ### Install
 ```
- git clone https://github.com/gonzalocasal/gametl.git
+git clone https://github.com/gonzalocasal/gametl.git
 ```
 
 ### Build
 ```
- mvn clean package
+cd gametl && mvn clean package
 ```
 
 ### Execute
