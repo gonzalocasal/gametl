@@ -1,5 +1,6 @@
 package com.gametl.bowling.model;
 
+import com.gametl.bowling.util.BowlingResources;
 import com.gametl.common.model.Play;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,7 +34,7 @@ public class BowlingPlay implements Play {
         try {
             this.score = Integer.parseInt(scoreStr);
             if (score < 0 || score > BOWLING_PLAY_MAX_SCORE) {
-                throw new RuntimeException(String.format("Invalid score value: %s", scoreStr));
+                invalidScore(scoreStr);
             }
             this.isFoul = false;
         } catch (NumberFormatException exception) {
@@ -46,8 +47,12 @@ public class BowlingPlay implements Play {
             this.score = BOWLING_PLAY_FOUL_SCORE;
             this.isFoul = true;
         } else {
-            throw new RuntimeException(String.format("Invalid score value: %s", scoreStr));
+            invalidScore(scoreStr);
         }
+    }
+
+    private void invalidScore(String scoreStr) {
+        throw new RuntimeException(String.format(BowlingResources.errorMessageInvalidScore, scoreStr));
     }
 
 }

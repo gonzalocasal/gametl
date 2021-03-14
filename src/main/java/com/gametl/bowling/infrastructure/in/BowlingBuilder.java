@@ -1,4 +1,4 @@
-package com.gametl.bowling.in;
+package com.gametl.bowling.infrastructure.in;
 
 import com.gametl.bowling.model.BowlingGame;
 

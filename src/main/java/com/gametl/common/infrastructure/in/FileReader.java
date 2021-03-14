@@ -22,9 +22,6 @@ public class FileReader {
                 consumer.accept(line);
                 linesCount++;
             }
-        } catch (Exception e){
-            log.error(e.getMessage());
-            throw e;
         }
         log.info("File read complete. {} records processed.", linesCount);
     }

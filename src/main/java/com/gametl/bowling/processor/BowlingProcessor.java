@@ -1,6 +1,6 @@
 package com.gametl.bowling.processor;
 
-import com.gametl.bowling.in.BowlingBuilder;
+import com.gametl.bowling.infrastructure.in.BowlingBuilder;
 import com.gametl.bowling.model.BowlingGame;
 import com.gametl.common.processor.GameProcessor;
 import lombok.AllArgsConstructor;

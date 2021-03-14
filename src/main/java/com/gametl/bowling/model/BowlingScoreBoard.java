@@ -31,15 +31,19 @@ public class BowlingScoreBoard {
 
         BowlingScoreFrame currentFrame = getCurrentFrame();
         currentFrame.addTry(play);
+        bonusPlayValidation(currentFrame);
 
+        if (currentFrame.isCompleted() && frameNumber < BOWLING_FRAMES_INDEX_MAX) {
+            this.frameNumber++;
+        }
+    }
+
+    private void bonusPlayValidation(BowlingScoreFrame currentFrame) {
         if (currentFrame.isSpare() && frameNumber < BOWLING_FRAMES_INDEX_MAX) {
             this.spareBonusFrame = currentFrame;
         }
         if (currentFrame.isStrike() && frameNumber < BOWLING_FRAMES_INDEX_MAX) {
             this.strikeBonusFrames.add(currentFrame);
-        }
-        if (currentFrame.isCompleted() && frameNumber < BOWLING_FRAMES_INDEX_MAX) {
-            this.frameNumber++;
         }
     }
 

@@ -11,11 +11,17 @@ import org.springframework.stereotype.Component;
 @PropertySource("classpath:bowling.properties")
 public class BowlingResources {
 
+    public static String errorMessageInvalidScore;
     public static String filePath;
 
     @Value("${file.path}")
     public void setFilePath (String filePath) {
         BowlingResources.filePath = filePath;
+    }
+
+    @Value("${error.message.invalid.score}")
+    public void setErrorMessageInvalidScore (String messageInvalidScore) {
+        BowlingResources.errorMessageInvalidScore = messageInvalidScore;
     }
 
 }
