@@ -2,10 +2,14 @@
 
 A commandline application to parse, process and export games results.  
 
-
 ### Prerequisites
 * Apache Maven 3.6.3
 * Java 8
+
+### Libraries & Frameworks
+* Springboot 2.4.3
+* Lombok 1.18.4
+* Junit 4.13
 
 ### Install
 ```
