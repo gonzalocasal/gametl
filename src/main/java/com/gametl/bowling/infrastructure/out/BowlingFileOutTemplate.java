@@ -3,6 +3,7 @@ package com.gametl.bowling.infrastructure.out;
 import com.gametl.bowling.model.BowlingPlay;
 import com.gametl.bowling.model.BowlingPlayer;
 import com.gametl.bowling.model.BowlingScoreFrame;
+import com.gametl.common.infrastructure.out.Writeable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +17,7 @@ import static com.gametl.bowling.util.BowlingConstants.*;
 @NoArgsConstructor
 @Component
 @Getter
-public class BowlingFileOutTemplate {
+public class BowlingFileOutTemplate implements Writeable<BowlingPlayer> {
 
     @Value("${filet.out.template.header}")
     private String header;
@@ -27,19 +28,22 @@ public class BowlingFileOutTemplate {
     @Value("${filet.out.template.score}")
     private String score;
 
-    public List<String> buildLines(BowlingPlayer player) {
+    @Override
+    public List<String> getObjectLines(BowlingPlayer object) {
         List<String> playerLines = new ArrayList<>();
         playerLines.add(header);
         playerLines.add(BOWLING_FILE_ROW_END_REGEX);
-        playerLines.add(player.getName());
+        playerLines.add(object.getName());
         playerLines.add(BOWLING_FILE_ROW_END_REGEX);
-        playerLines.add(buildPinFalls(player));
+        playerLines.add(buildPinFalls(object));
         playerLines.add(BOWLING_FILE_ROW_END_REGEX);
-        playerLines.add(buildScores(player));
+        playerLines.add(buildScores(object));
         playerLines.add(BOWLING_FILE_ROW_END_REGEX);
         playerLines.add(BOWLING_FILE_ROW_END_REGEX);
         return playerLines;
     }
+
+
 
     private String buildPinFalls(BowlingPlayer player) {
         StringBuilder pinFallsBuilder = new StringBuilder();
@@ -122,5 +126,7 @@ public class BowlingFileOutTemplate {
         }
         return scoreBuilder.toString();
     }
+
+
 
 }

@@ -16,28 +16,18 @@ import java.util.List;
 public class BowlingFileExporter implements BowlingExporter {
 
     private final String fileOutPath;
-    private final GameFileWriter fileWriter;
-    private final BowlingFileOutTemplate template;
+    private final GameFileWriter<BowlingPlayer> fileWriter;
 
     @Autowired
-    public BowlingFileExporter(@Value("${file.out.path}") String fileOutPath, GameFileWriter fileWriter, BowlingFileOutTemplate template) {
+    public BowlingFileExporter(@Value("${file.out.path}") String fileOutPath, GameFileWriter<BowlingPlayer> fileWriter) {
         this.fileOutPath = fileOutPath;
         this.fileWriter = fileWriter;
-        this.template = template;
     }
 
     @Override
     public void export(BowlingGame game) throws Exception {
-
-        List<String> lines = new ArrayList<>();
-        for (BowlingPlayer player : game.getPlayersMap().values()) {
-            if (player.getScoreBoard().isComplete())
-                lines.addAll(template.buildLines(player));
-            else
-                log.warn("Player {} ignored. Game is not completed.", player.getName());
-        }
-
-        fileWriter.export(fileOutPath, lines);
+        List<BowlingPlayer> players = new ArrayList<>(game.getPlayersMap().values());
+        fileWriter.export(fileOutPath, players);
     }
 
 }
