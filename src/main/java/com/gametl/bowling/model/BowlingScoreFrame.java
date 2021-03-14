@@ -37,7 +37,7 @@ public class BowlingScoreFrame {
             countFirstBall(play);
         } else if (secondTry == null) {
             countSecondBall(play);
-        } else if (isLastFrame) {
+        } else if (isLastFrame && isStrike) {
             countThirdBall(play);
         }
     }
