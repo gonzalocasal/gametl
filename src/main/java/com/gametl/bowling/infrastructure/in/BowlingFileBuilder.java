@@ -16,7 +16,7 @@ public class BowlingFileBuilder implements BowlingBuilder {
     private final GameFileReader fileReader;
 
     @Autowired
-    public BowlingFileBuilder(@Value("${file.path}") String filePath, GameFileReader fileReader) {
+    public BowlingFileBuilder(@Value("${file.in.path}") String filePath, GameFileReader fileReader) {
         this.filePath = filePath;
         this.fileReader = fileReader;
     }

@@ -43,8 +43,6 @@ public class BowlingFileOutTemplate implements Writeable<BowlingPlayer> {
         return playerLines;
     }
 
-
-
     private String buildPinFalls(BowlingPlayer player) {
         StringBuilder pinFallsBuilder = new StringBuilder();
         pinFallsBuilder.append(pinFalls);
@@ -58,18 +56,14 @@ public class BowlingFileOutTemplate implements Writeable<BowlingPlayer> {
         StringBuilder frameBuilder = new StringBuilder();
 
         if (!frame.isLastFrame()) {
-
             firstBox(frame, frameBuilder);
             frameBuilder.append(BOWLING_FILE_ROW_SPLIT_REGEX);
-
             secondBox(frame, frameBuilder);
         } else {
             lastFrameBox(frameBuilder, frame.getFirstTry());
             frameBuilder.append(BOWLING_FILE_ROW_SPLIT_REGEX);
-
             lastFrameBox(frameBuilder, frame.getSecondTry());
             frameBuilder.append(BOWLING_FILE_ROW_SPLIT_REGEX);
-
             lastFrameBox(frameBuilder, frame.getThirdTry());
         }
         frameBuilder.append(BOWLING_FILE_ROW_SPLIT_REGEX);
@@ -126,7 +120,5 @@ public class BowlingFileOutTemplate implements Writeable<BowlingPlayer> {
         }
         return scoreBuilder.toString();
     }
-
-
 
 }
