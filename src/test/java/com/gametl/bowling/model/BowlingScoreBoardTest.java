@@ -3,7 +3,7 @@ package com.gametl.bowling.model;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.gametl.bowling.util.BowlingConstants.*;
+import static com.gametl.bowling.util.BowlingConstants.BOWLING_FILE_ROW_SPLIT_REGEX;
 
 public class BowlingScoreBoardTest {
 
