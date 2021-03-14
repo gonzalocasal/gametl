@@ -7,7 +7,9 @@ import lombok.ToString;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * Represents a Bowling Game with a Map of Players.
+ */
 @Getter
 @ToString
 public class BowlingGame implements Game<BowlingPlay> {

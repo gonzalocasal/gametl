@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.function.Consumer;
 
+/**
+ * Builds a Bowling Game from a flat File.
+ */
 @Component
 public class BowlingFileBuilder implements BowlingBuilder {
 

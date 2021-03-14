@@ -8,6 +8,9 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.function.Consumer;
 
+/**
+ * Generic class to read Games data from a flat File.
+ */
 @Component
 @Log4j2
 public class GameFileReader {

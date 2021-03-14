@@ -7,6 +7,10 @@ import lombok.ToString;
 
 import static com.gametl.bowling.util.BowlingConstants.*;
 
+
+/**
+ * Represents a throw of o Bowling Game Player.
+ */
 @Getter
 @Setter
 @ToString
@@ -33,6 +37,9 @@ public class BowlingPlay implements Play {
         this.isStrike = this.score == BOWLING_PLAY_MAX_SCORE;
     }
 
+    /**
+     * @return the input Score value. Validate that the input score is a number between 0 and 10. If is a Foul throw, the score is 0.
+     */
     private int parseScore(String scoreStr) {
         int parsedScore = BOWLING_PLAY_FOUL_SCORE;
         if (!isFoul){
@@ -48,10 +55,16 @@ public class BowlingPlay implements Play {
         return parsedScore;
     }
 
+    /**
+     * @implNote check the score range.
+     */
     private boolean isOutOfRange(int parsedScore) {
         return parsedScore < 0 || parsedScore > BOWLING_PLAY_MAX_SCORE;
     }
 
+    /**
+     * @implNote check if the user throw is a Foul.
+     */
     private boolean checkFoul(String scoreStr) {
         return BOWLING_FOUL_CHAR.equalsIgnoreCase(scoreStr);
     }

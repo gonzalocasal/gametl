@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Writes a Bowling Game result from a flat File.
+ */
 @Log4j2
 @Component
 public class BowlingFileExporter implements BowlingExporter {

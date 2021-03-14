@@ -14,6 +14,9 @@ import java.util.List;
 
 import static com.gametl.bowling.util.BowlingConstants.*;
 
+/**
+ * Represents a flat file output of a Bowling Game Score Board.
+ */
 @NoArgsConstructor
 @Component
 @Getter
@@ -43,6 +46,9 @@ public class BowlingFileOutTemplate implements Writeable<BowlingPlayer> {
         return playerLines;
     }
 
+    /**
+     * @return String line with all the throws of a Player.
+     */
     private String buildPinFalls(BowlingPlayer player) {
         StringBuilder pinFallsBuilder = new StringBuilder();
         pinFallsBuilder.append(pinFalls);
@@ -52,6 +58,9 @@ public class BowlingFileOutTemplate implements Writeable<BowlingPlayer> {
         return pinFallsBuilder.toString();
     }
 
+    /**
+     * @return String value of one frames of the throws row.
+     */
     private String buildFrame(BowlingScoreFrame frame) {
         StringBuilder frameBuilder = new StringBuilder();
 
@@ -71,6 +80,9 @@ public class BowlingFileOutTemplate implements Writeable<BowlingPlayer> {
         return frameBuilder.toString();
     }
 
+    /**
+     * @implNote append the first box of a frame.
+     */
     private void firstBox(BowlingScoreFrame frame, StringBuilder frameBuilder) {
         if (frame.isStrike()) {
             frameBuilder.append(BOWLING_STRIKE_FIRST_ROW_CHAR);
@@ -82,6 +94,9 @@ public class BowlingFileOutTemplate implements Writeable<BowlingPlayer> {
         }
     }
 
+    /**
+     * @implNote append the second box of a frame.
+     */
     private void secondBox(BowlingScoreFrame frame, StringBuilder frameBuilder) {
         if (frame.isStrike()) {
             frameBuilder.append(BOWLING_STRIKE_CHAR);
@@ -96,6 +111,9 @@ public class BowlingFileOutTemplate implements Writeable<BowlingPlayer> {
         }
     }
 
+    /**
+     * @implNote append the third box of the last frame.
+     */
     private void lastFrameBox(StringBuilder frameBuilder, BowlingPlay play) {
         if (play != null) {
             if (play.isStrike())
@@ -107,6 +125,9 @@ public class BowlingFileOutTemplate implements Writeable<BowlingPlayer> {
         }
     }
 
+    /**
+     * @implNote append the score frames row.
+     */
     private String buildScores(BowlingPlayer player) {
         StringBuilder scoreBuilder = new StringBuilder();
         scoreBuilder.append(score);

@@ -11,6 +11,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+/**
+ * Generic class to writes Games data into a flat File.
+ */
 @Log4j2
 @Component
 @AllArgsConstructor
