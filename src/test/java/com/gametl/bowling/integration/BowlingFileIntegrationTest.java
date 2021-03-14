@@ -28,7 +28,6 @@ public class BowlingFileIntegrationTest {
   public void bowlingGameBuilderTest() throws Exception {
 
     BowlingGame game = builder.build();
-
     exporter.export(game);
   }
 
