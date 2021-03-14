@@ -26,30 +26,34 @@ public class BowlingPlay implements Play {
     @Override
     public void buildFromFile(String fileLine) {
         String[] split = fileLine.split(BOWLING_FILE_ROW_SPLIT_REGEX);
+
         this.playerName = split[BOWLING_FILE_ROW_NAME_INDEX].trim();
-        parseScore(split[BOWLING_FILE_ROW_SCORE_INDEX].trim());
+        this.isFoul = checkFoul(split[BOWLING_FILE_ROW_SCORE_INDEX].trim());
+        this.score = parseScore(split[BOWLING_FILE_ROW_SCORE_INDEX].trim());
         this.isStrike = this.score == BOWLING_PLAY_MAX_SCORE;
     }
 
-    private void parseScore(String scoreStr) {
-        try {
-            this.score = Integer.parseInt(scoreStr);
-            if (score < 0 || score > BOWLING_PLAY_MAX_SCORE) {
+    private int parseScore(String scoreStr) {
+        int parsedScore = BOWLING_PLAY_FOUL_SCORE;
+        if (!isFoul){
+            try {
+                parsedScore = Integer.parseInt(scoreStr);
+                if (isOutOfRange(parsedScore)) {
+                    invalidScore(scoreStr);
+                }
+            } catch (NumberFormatException e) {
                 invalidScore(scoreStr);
             }
-            this.isFoul = false;
-        } catch (NumberFormatException exception) {
-            parseFoul(scoreStr);
         }
+        return parsedScore;
     }
 
-    private void parseFoul(String scoreStr) {
-        if (BOWLING_FOUL_CHAR.equalsIgnoreCase(scoreStr)) {
-            this.score = BOWLING_PLAY_FOUL_SCORE;
-            this.isFoul = true;
-        } else {
-            invalidScore(scoreStr);
-        }
+    private boolean isOutOfRange(int parsedScore) {
+        return parsedScore < 0 || parsedScore > BOWLING_PLAY_MAX_SCORE;
+    }
+
+    private boolean checkFoul(String scoreStr) {
+        return BOWLING_FOUL_CHAR.equalsIgnoreCase(scoreStr);
     }
 
     private void invalidScore(String scoreStr) {
