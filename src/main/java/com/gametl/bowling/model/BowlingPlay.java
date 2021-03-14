@@ -1,6 +1,5 @@
 package com.gametl.bowling.model;
 
-import com.gametl.bowling.util.BowlingResources;
 import com.gametl.common.model.Play;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,8 +26,8 @@ public class BowlingPlay implements Play {
     @Override
     public void buildFromFile(String fileLine) {
         String[] split = fileLine.split(BOWLING_FILE_ROW_SPLIT_REGEX);
-        this.playerName = split[0].trim();
-        parseScore(split[1].trim());
+        this.playerName = split[BOWLING_FILE_ROW_NAME_INDEX].trim();
+        parseScore(split[BOWLING_FILE_ROW_SCORE_INDEX].trim());
         this.isStrike = this.score == BOWLING_PLAY_MAX_SCORE;
     }
 
@@ -54,7 +53,7 @@ public class BowlingPlay implements Play {
     }
 
     private void invalidScore(String scoreStr) {
-        throw new RuntimeException(String.format(BowlingResources.errorMessageInvalidScore, scoreStr));
+        throw new RuntimeException(String.format("Invalid score value: %s", scoreStr));
     }
 
 }

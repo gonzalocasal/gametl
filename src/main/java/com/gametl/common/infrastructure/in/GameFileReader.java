@@ -23,7 +23,7 @@ public class GameFileReader {
                 linesCount++;
             }
         }
-        log.info("File read complete. {} records processed.", linesCount);
+        log.info("File read complete. {} records read.", linesCount);
     }
 
 }
