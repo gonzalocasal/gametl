@@ -21,7 +21,6 @@ public class BowlingScoreFrame {
 
     private boolean isStrike;
     private boolean isSpare;
-    private boolean isFoul;
     private boolean isLastFrame;
 
     public BowlingScoreFrame(int index) {
