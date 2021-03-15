@@ -69,11 +69,11 @@ public class BowlingFileOutTemplate implements Writeable<BowlingPlayer> {
             frameBuilder.append(BOWLING_FILE_ROW_SPLIT_REGEX);
             secondBox(frame, frameBuilder);
         } else {
-            lastFrameBox(frameBuilder, frame.getFirstTry());
+            lastFrameBox(frameBuilder, frame.getFirstTry(), false);
             frameBuilder.append(BOWLING_FILE_ROW_SPLIT_REGEX);
-            lastFrameBox(frameBuilder, frame.getSecondTry());
+            lastFrameBox(frameBuilder, frame.getSecondTry(), frame.isSpare());
             frameBuilder.append(BOWLING_FILE_ROW_SPLIT_REGEX);
-            lastFrameBox(frameBuilder, frame.getThirdTry());
+            lastFrameBox(frameBuilder, frame.getThirdTry(), frame.isSpare());
         }
         frameBuilder.append(BOWLING_FILE_ROW_SPLIT_REGEX);
 
@@ -114,7 +114,11 @@ public class BowlingFileOutTemplate implements Writeable<BowlingPlayer> {
     /**
      * @implNote append the third box of the last frame.
      */
-    private void lastFrameBox(StringBuilder frameBuilder, BowlingPlay play) {
+    private void lastFrameBox(StringBuilder frameBuilder, BowlingPlay play, boolean isSpare) {
+        if (isSpare) {
+            frameBuilder.append(BOWLING_SPARE_CHAR);
+            return;
+        }
         if (play != null) {
             if (play.isStrike())
                 frameBuilder.append(BOWLING_STRIKE_CHAR);

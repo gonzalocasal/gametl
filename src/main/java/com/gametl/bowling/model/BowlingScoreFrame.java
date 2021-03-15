@@ -25,6 +25,7 @@ public class BowlingScoreFrame {
     private boolean isStrike;
     private boolean isSpare;
     private boolean isLastFrame;
+    private boolean isCompleted;
 
     public BowlingScoreFrame(int index) {
         this.isLastFrame = (index == BOWLING_FRAMES_INDEX_MAX);
@@ -59,6 +60,9 @@ public class BowlingScoreFrame {
         frameScore = play.getScore();
         if (play.isStrike()) {
             isStrike = true;
+            if (!isLastFrame) {
+                isCompleted = true;
+            }
         }
     }
 
@@ -71,6 +75,11 @@ public class BowlingScoreFrame {
         if (frameScore == BOWLING_PLAY_MAX_SCORE) {
             isSpare = true;
         }
+        if (!isLastFrame) {
+            isCompleted = true;
+        } else if (!isSpare && !isStrike) {
+            isCompleted = true;
+        }
     }
 
     /**
@@ -79,6 +88,7 @@ public class BowlingScoreFrame {
     private void countThirdBall(BowlingPlay play) {
         thirdTry = play;
         frameScore += play.getScore();
+        isCompleted = true;
     }
 
     /**
@@ -89,11 +99,7 @@ public class BowlingScoreFrame {
      * @return if the current frame is completed.
      */
     public boolean isCompleted() {
-        if (isLastFrame) {
-            return (isBonusFrame() && thirdTry != null) || (!isBonusFrame() && secondTry != null);
-        } else {
-            return isStrike || secondTry != null;
-        }
+        return isCompleted;
     }
 
     /**

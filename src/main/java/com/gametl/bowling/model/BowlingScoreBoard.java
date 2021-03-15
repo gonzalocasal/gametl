@@ -47,7 +47,7 @@ public class BowlingScoreBoard {
      * @implNote After the registration of a new throw, this validate if the current frame is a bonus frame: Spare or Strike.
      */
     private void bonusPlayValidation(BowlingScoreFrame currentFrame) {
-        if (currentFrame.isSpare() && frameNumber < BOWLING_FRAMES_INDEX_MAX) {
+        if (currentFrame.isSpare()) {
             this.spareBonusFrame = currentFrame;
         }
         if (currentFrame.isStrike() && frameNumber < BOWLING_FRAMES_INDEX_MAX) {

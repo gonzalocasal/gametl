@@ -8,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Writes a Bowling Game result from a flat File.
  */
@@ -29,8 +26,7 @@ public class BowlingFileExporter implements BowlingExporter {
 
     @Override
     public void export(BowlingGame game) throws Exception {
-        List<BowlingPlayer> players = new ArrayList<>(game.getPlayersMap().values());
-        fileWriter.export(fileOutPath, players);
+        fileWriter.export(fileOutPath, game.getResults());
     }
 
 }
