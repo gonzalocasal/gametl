@@ -15,8 +15,13 @@ import java.util.*;
 @ToString
 public class BowlingGame implements Game<BowlingPlay> {
 
-    private final Map<String, BowlingPlayer> playersMap = new HashMap<>();
-    Set<BowlingPlayer> completePlayers = new HashSet<>();
+    private final Map<String, BowlingPlayer> playersMap;
+    private final Set<BowlingPlayer> completePlayers;
+
+    public BowlingGame() {
+        this.playersMap = new HashMap<>();
+        this.completePlayers = new HashSet<>();
+    }
 
     @Override
     public void addPlay(BowlingPlay play) {

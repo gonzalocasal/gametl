@@ -15,15 +15,13 @@ import static com.gametl.bowling.util.BowlingConstants.*;
 public class BowlingScoreBoard {
 
     private final BowlingScoreFrame[] scoreFrames;
-
-    private final LinkedList<BowlingScoreFrame> strikeBonusFrames = new LinkedList<>();
-
+    private final LinkedList<BowlingScoreFrame> strikeBonusFrames;
     private BowlingScoreFrame spareBonusFrame;
-
     private int frameNumber;
 
     public BowlingScoreBoard() {
         this.scoreFrames = new BowlingScoreFrame[BOWLING_FRAMES_COUNT_MAX];
+        this.strikeBonusFrames = new LinkedList<>();
     }
 
     /**
