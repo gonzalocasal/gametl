@@ -77,7 +77,7 @@ public class BowlingScoreFrame {
         }
         if (!isLastFrame) {
             isCompleted = true;
-        } else if (!isSpare && !isStrike) {
+        } else if (!isBonusFrame()) {
             isCompleted = true;
         }
     }
