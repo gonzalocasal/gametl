@@ -27,8 +27,8 @@ java -jar target/gametl-1.0.0.jar
 ```
 The default input and output file paths are relative: 
 
-* _src/main/resources/bowling_example_
-* _src/main/resources/bowling_example_out_
+* **_src/main/resources/bowling_example_**
+* **_src/main/resources/bowling_example_out_**
 
 You can override one or both paths, and execute the application with custom absolute paths:
 ```
