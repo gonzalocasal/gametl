@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import static com.gametl.bowling.util.BowlingConstants.*;
 
@@ -15,7 +16,7 @@ import static com.gametl.bowling.util.BowlingConstants.*;
 public class BowlingScoreBoard {
 
     private final BowlingScoreFrame[] scoreFrames;
-    private final LinkedList<BowlingScoreFrame> strikeBonusFrames;
+    private final List<BowlingScoreFrame> strikeBonusFrames;
     private BowlingScoreFrame spareBonusFrame;
     private int frameNumber;
 

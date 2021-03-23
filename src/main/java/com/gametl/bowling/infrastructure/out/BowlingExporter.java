@@ -7,6 +7,6 @@ import com.gametl.bowling.model.BowlingGame;
  */
 public interface BowlingExporter {
 
-    void export(BowlingGame game) throws Exception;
+    void export(BowlingGame game);
 
 }

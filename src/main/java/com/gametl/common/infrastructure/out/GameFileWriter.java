@@ -21,7 +21,7 @@ public class GameFileWriter<T> {
 
     private final Writeable<T> template;
 
-    public void export (String outPath, List<T> elements) throws IOException {
+    public void export (String outPath, List<T> elements) {
         log.info("Writing the file {}", outPath);
         int linesCount = 0;
 
@@ -34,6 +34,8 @@ public class GameFileWriter<T> {
                     linesCount++;
                 }
             }
+        } catch (IOException e) {
+            throw new RuntimeException(e.getCause());
         }
         log.info("File write complete. {} lines written.", linesCount);
     }

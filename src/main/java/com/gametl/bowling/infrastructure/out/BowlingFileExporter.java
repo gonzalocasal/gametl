@@ -25,7 +25,7 @@ public class BowlingFileExporter implements BowlingExporter {
     }
 
     @Override
-    public void export(BowlingGame game) throws Exception {
+    public void export(BowlingGame game) {
         fileWriter.export(fileOutPath, game.getResults());
     }
 
